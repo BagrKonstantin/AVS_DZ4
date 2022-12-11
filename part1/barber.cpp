@@ -65,8 +65,8 @@ int main() {
     int pthint[customers_amount];
 
     pthread_create(&pthhairdresser, nullptr, hairdresser, nullptr);
-    for (int i = 1; i <= customers_amount; ++i) {
-        pthint[i] = i;
+    for (int i = 0; i < customers_amount; ++i) {
+        pthint[i] = i + 1;
         pthread_create(&pthread[i], nullptr, customer, (void *) (pthint + i));
     }
     for (unsigned long i : pthread)
