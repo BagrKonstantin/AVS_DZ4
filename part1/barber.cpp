@@ -60,16 +60,16 @@ int main() {
     pthread_mutex_init(&can_take_nex_from_queue, nullptr);
     pthread_mutex_init(&can_cut, nullptr);
 
-    pthread_t pthhairdresser;
-    pthread_t pthread[customers_amount];
-    int pthint[customers_amount];
+    pthread_t p_dresser;
+    pthread_t p_arr[customers_amount];
+    int c_arr[customers_amount];
 
-    pthread_create(&pthhairdresser, nullptr, hairdresser, nullptr);
+    pthread_create(&p_dresser, nullptr, hairdresser, nullptr);
     for (int i = 0; i < customers_amount; ++i) {
-        pthint[i] = i + 1;
-        pthread_create(&pthread[i], nullptr, customer, (void *) (pthint + i));
+        c_arr[i] = i + 1;
+        pthread_create(&p_arr[i], nullptr, customer, (void *) (c_arr + i));
     }
-    for (unsigned long i : pthread)
+    for (unsigned long i : p_arr)
         pthread_join(i, nullptr);
 
     return 0;
