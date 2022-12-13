@@ -1,0 +1,40 @@
+Barber: Zzzz...
+Customer 1: Can i get a haircut?
+Barber: customer 1 is being served
+Customer 2: Can i get a haircut?
+Customer 2: Zzzz...
+Barber: customer 2 is being served
+Customer 1: Thank you!
+Customer 3: Can i get a haircut?
+Customer 3: Zzzz...
+Customer 2: Thank you!
+Barber: customer 3 is being served
+Customer 4: Can i get a haircut?
+Customer 5: Can i get a haircut?
+Customer 5: Zzzz...
+Customer 4: Zzzz...
+Customer 3: Thank you!
+Barber: customer 4 is being served
+Customer 4: Thank you!
+Barber: customer 5 is being served
+Customer 6: Can i get a haircut?
+Customer 6: Zzzz...
+Customer 5: Thank you!
+Barber: customer 6 is being served
+Customer 7: Can i get a haircut?
+Customer 7: Zzzz...
+Customer 6: Thank you!
+Barber: customer 7 is being served
+Customer 8: Can i get a haircut?
+Customer 8: Zzzz...
+Customer 7: Thank you!
+Barber: customer 8 is being served
+Customer 9: Can i get a haircut?
+Customer 9: Zzzz...
+Barber: customer 9 is being served
+Customer 8: Thank you!
+Customer 10: Can i get a haircut?
+Customer 10: Zzzz...
+Customer 9: Thank you!
+Barber: customer 10 is being served
+Customer 10: Thank you!
