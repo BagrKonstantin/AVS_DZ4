@@ -13,10 +13,6 @@ std::queue<int> queue;      // очередь клиентов
 
 int customers;              // кол-во клиентов
 
-bool is_file;
-void print(std::string str, int val) {
-    
-}
 
 
 void *barber_function(void *arg) {
@@ -71,7 +67,6 @@ void *make_customer_function(void *arg) {// имитируем очередь
 
 
 int main(int argc, char * argv[]) {
-    std::cout << argc;
     if (argc == 1) {
         std::cin >> customers;
     } else if (argc == 2) {
