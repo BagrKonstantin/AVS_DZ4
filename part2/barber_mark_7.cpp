@@ -8,6 +8,8 @@
 sem_t barber_is_free;       //симафор для блокировки парикмахера
 sem_t customer_is_waiting;  // симафор для блокировки пользователей
 
+pthread_mutex_t is_writing;        // мьютекс для того что бы обезопасить ввывод
+
 std::queue<int> queue;      // очередь клиентов
 
 int customers;              // кол-во клиентов
@@ -20,6 +22,7 @@ FILE *output;
 
 
 void print(const char *str, int val) {
+    pthread_mutex_lock(&is_writing);
     if (is_file) {
         if (val == 0) {
             fprintf(output, str);
@@ -33,6 +36,8 @@ void print(const char *str, int val) {
             printf(str, val);
         }
     }
+    pthread_mutex_unlock(&is_writing);
+
 }
 
 
@@ -112,6 +117,8 @@ int main(int argc, char * argv[]) {
 
     sem_init(&customer_is_waiting, 0, 0);
     sem_init(&barber_is_free, 0, 0);
+
+    pthread_mutex_init(&is_writing, nullptr);
 
     pthread_create(&barber, nullptr, barber_function, nullptr); // создание потока парикмахера
 
