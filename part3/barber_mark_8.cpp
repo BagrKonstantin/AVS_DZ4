@@ -67,10 +67,10 @@ void *customer_function(void *arg) {
 
     print("Customer %d: Can i get a haircut?\n", client_number);   // говорим что хотим стрижку
     if (queue.front() != client_number) print("Customer %d: Zzzz...\n", client_number); // засыпает если не первый в очереди
-    while (queue.front() != client_number); // ждём пока не наступит наша очередь
+    while (queue.front() != client_number); // на windows без этой строчки вывод очень сильно путается. На линуксе её можно закомментить.
     sem_post(&customer_is_waiting);         // сообщаем, что готовы стричся
     sem_wait(&barber_is_free);              // ждём парикмахера
-    while (queue.front() == client_number); // ждём пока нас подстригут
+    while (queue.front() == client_number); // на windows без этой строчки вывод очень сильно путается. На линуксе её можно закомментить.
 
     print("Customer %d: Thank you! \n", client_number);    // говорим спасибо что подстригли
 
