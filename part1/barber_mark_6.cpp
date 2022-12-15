@@ -40,10 +40,10 @@ void *customer_function(void *arg) {
 
     printf("Customer %d: Can i get a haircut?\n", client_number);   // говорим что хотим стрижку
     if (queue.front() != client_number) printf("Customer %d: Zzzz...\n", client_number); // засыпает если не первый в очереди
-    while (queue.front() != client_number); // ждём пока не наступит наша очередь
+    while (queue.front() != client_number); // на windows без этой строчки вывод очень сильно путается. На линуксе её можно закомментить.
     sem_post(&customer_is_waiting);         // сообщаем, что готовы стричся
     sem_wait(&barber_is_free);              // ждём парикмахера
-    while (queue.front() == client_number); // ждём пока нас подстригут
+    while (queue.front() == client_number); // на windows без этой строчки вывод очень сильно путается. На линуксе её можно закомментить.
 
     printf("Customer %d: Thank you! \n", client_number);    // говорим спасибо что подстригли
 
@@ -73,16 +73,14 @@ int main(int argc, char * argv[]) {
         customers = std::stoi(argv[1]);
     }
 
-
     srand(time(nullptr));
-
 
     queue = std::queue<int>();
     pthread_t barber;
     pthread_t customer_maker;
 
 
-    sem_init(&customer_is_waiting, 0, 0);
+    sem_init(&customer_is_waiting, 0, 0);       // инициализируем симафоры
     sem_init(&barber_is_free, 0, 0);
 
     pthread_create(&barber, nullptr, barber_function, nullptr); // создание потока парикмахера
