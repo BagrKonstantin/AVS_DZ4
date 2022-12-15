@@ -40,7 +40,7 @@ void *customer_function(void *arg) {
 
     printf("Customer %d: Can i get a haircut?\n", client_number);   // говорим что хотим стрижку
     if (queue.front() != client_number) printf("Customer %d: Zzzz...\n", client_number); // засыпает если не первый в очереди
-    while (queue.front() != client_number); // на windows без этой строчки вывод очень сильно путается. На линуксе её можно закомментить.
+    while (queue.front() != client_number); // ждём своей очереди
     sem_post(&customer_is_waiting);         // сообщаем, что готовы стричся
     sem_wait(&barber_is_free);              // ждём парикмахера
     while (queue.front() == client_number); // на windows без этой строчки вывод очень сильно путается. На линуксе её можно закомментить.
